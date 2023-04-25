@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>AEL Lab</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<link rel="stylesheet" href="./static/w3-modified.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="./static/awesome-icons.js"></script>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Lato", sans-serif
+    }
+
+    .w3-bar,
+    h1,
+    button {
+        font-family: "Montserrat", sans-serif
+    }
+
+    .fa-anchor,
+    .fa-microscope,
+    .fa-seedling {
+        font-size: 200px
+    }
+
+    .col-container {
+        display: table;
+        /* Make the container element behave like a table */
+        width: 100%;
+        /* Set full-width to expand the whole page */
+    }
+
+    .col {
+        display: table-cell;
+        /* Make elements inside the container behave like table cells */
+    }
+
+    .center {
+        line-height: 200px;
+        height: 200px;
+        text-align: center;
+    }
+
+    /* .center img {
+        line-height: 2;
+        display: inline-block;
+        vertical-align: middle;
+    } */
+
+    .center p {
+        line-height: 1;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    div.nav {
+        font-size: 13.2px;
+    }
+
+    .w3-badge {
+        height: 13px;
+        width: 13px;
+        padding: 0
+    }
+
+    .w3-row.custom-flex {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .w3-row.custom-flex.flex>.w3-col {
+        flex: 1 0 290px;
+    }
+
+    .w3-row-padding.custom-flex {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .w3-row-padding.custom-flex.flex>.w3-col {
+        flex: 1 0 290px;
+    }
+
+    .fade {
+        opacity: 1;
+    }
+
+    .dots {
+        border-style: solid;
+        border-width: thin;
+    }
+
+    .dots.active {
+        background-color: blue;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    .carousel-control-prev.slideshow:hover {
+        background-image: linear-gradient(to left, rgba(255, 0, 0, 0), rgb(255, 255, 255));
+    }
+
+    .carousel-control-next.slideshow:hover {
+        background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgb(255, 255, 255));
+    }
+	
+	.btn {
+	  transition: 0.3s;
+	}
+
+	.btn:hover {
+	  background-color: #FFFF4D;
+	  color: white;
+	}
+	
+	.courses-box3 .single-item-wrapper {
+		margin-bottom: 15px;
+		background: #FFFFFF;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -moz-flex;
+		display: -ms-flex;
+		display: -o-flex;
+		display: flex;
+		-webkit-transition: all 0.5s ease-out;
+		-moz-transition: all 0.5s ease-out;
+		-ms-transition: all 0.5s ease-out;
+		-o-transition: all 0.5s ease-out;
+		transition: all 0.5s ease-out;
+	}
+</style>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="w3-top" style="z-index: 9999;">
+        <div class="nav w3-blue">
+            <a class="w3-button w3-right w3-hide-large w3-hover-blue w3-xlarge" href="javascript:void(0);"
+                itle="Toggle Navigation Menu" style="text-decoration:none"><i id="menu"
+                    class="fa fa-bars w3-round-large" onclick=myFunction()
+                    style="background-color: #1E90FF; padding: 5px;"></i>&nbsp;&nbsp;&nbsp;<i class='fas fa-phone'
+                    style="font-size: 15px; text-decoration:none;"> +91 123-4567890 </i>| <i class="fa fa-envelope"
+                    style="font-size: 15px;text-decoration:none;"> crtoff@iitg.ac.in </i> </a>
+            <a class="w3-hide-small w3-hide-medium w3-padding-large float-lg-right" style="text-decoration:none;"> <i
+                    class='fas fa-phone'></i> +91 123-4567890 | <i class="fa fa-envelope"></i> crtoff@iitg.ac.in</a>
+
+
+            <a href="./index.html"
+                class="w3-button w3-medium float-left w3-hide-small w3-hide-medium w3-padding-large w3-hover-light-blue"
+                style="text-decoration:none;"><b>Home</b></a>
+			
+			<div class="w3-dropdown-hover w3-mobile">
+				<button class="w3-button w3-medium w3-hide-small w3-hide-medium w3-padding-large w3-hover-light-blue"><b>Academics <i class="fa fa-caret-down"></i></b></button>
+				<div class="w3-dropdown-content w3-bar-block w3-card">
+				  <a href="./templates/postgraduate.html" class="w3-bar-item w3-button w3-animate-top">Postgraduate</a>
+				  <a href="./templates/doctoral.html" class="w3-bar-item w3-button w3-animate-top">Doctoral</a>
+				</div>
+			</div>
+			
+			<div class="w3-dropdown-hover">
+				<button class="w3-button w3-medium w3-hide-small w3-hide-medium w3-padding-large w3-hover-light-blue"><b>People <i class="fa fa-caret-down"></i></b></button>
+				<div class="w3-dropdown-content w3-bar-block w3-card">
+				  <a href="./templates/Faculty.html" class="w3-bar-item w3-button w3-animate-top">Faculty</a>
+				  <a href="./templates/staff.html" class="w3-bar-item w3-button w3-animate-top">Staff</a>
+				  <a href="./templates/students.html" class="w3-bar-item w3-button w3-animate-top">Students</a>
+				</div>
+			</div>
+			
+			<div class="w3-dropdown-hover">
+				<button class="w3-button w3-medium w3-hide-small w3-hide-medium w3-padding-large w3-hover-light-blue"><b>Research <i class="fa fa-caret-down"></i></b></button>
+				<div class="w3-dropdown-content w3-bar-block w3-card">
+				  <a href="./templates/publications.html" class="w3-bar-item w3-button w3-animate-top">Publications</a>
+				  <a href="./templates/projects.html" class="w3-bar-item w3-button w3-animate-top">Projects</a>
+				</div>
+			</div>
+
+            <a href="./templates/admission.html"
+                class="w3-button w3-hide-small w3-hide-medium w3-medium w3-padding-large w3-hover-light-blue"
+                style="text-decoration:none;"><b>Admission</b></a>
+
+			<a href="./templates/facilities.html"
+                class="w3-button w3-hide-small w3-hide-medium w3-medium w3-padding-large w3-hover-light-blue"
+                style="text-decoration:none;"><b>Facilities</b></a>
+
+            <a href="#gallery"
+                class="w3-button w3-hide-small w3-hide-medium  w3-medium w3-padding-large w3-hover-light-blue"
+                style="text-decoration:none"><b>Gallery</b></a>
+
+            <a href="#contact"
+                class="w3-button w3-hide-small w3-hide-medium w3-medium w3-padding-large w3-hover-light-blue"
+                style="text-decoration:none"><b>Contact Us</b></a>
+
+        </div>
+
+        <!-- Navbar on small screens -->
+        <div id="navDemo" class="w3-bar-block w3-card w3-white w3-hide w3-hide-large w3-large w3-animate-top"
+            style="background-color: #4de65a; height:200vh;">
+            <a href="./index.html" class="w3-bar-item w3-left w3-button w3-padding-large w3-border" onclick=minimize()>Home</a>
+			
+			<div class="w3-dropdown-click">
+				<div class="w3-button w3-left w3-card" onclick="myAccFunc('accacad')">Academics <i class="fa fa-caret-down w3-right" ></i></div>
+				<div id="accacad" class="w3-hide w3-white w3-card-4">
+					<a href="./templates/postgraduate.html" class="w3-bar-item w3-button">Postdoctoral</a>
+					<a href="./templates/doctoral.html" class="w3-bar-item w3-button">Doctoral</a>
+				</div>
+			</div>
+			
+			<div class="w3-dropdown-click">
+				<div class="w3-button w3-left w3-card" onclick="myAccFunc('accpeople')">People <i class="fa fa-caret-down w3-right"></i></div>
+				<div id="accpeople" class="w3-hide w3-white w3-card-4">
+					<a href="./templates/Faculty.html" class="w3-bar-item w3-button">Faculty</a>
+					<a href="./templates/staff.html" class="w3-bar-item w3-button">Staff</a>
+					<a href="./templates/students.html" class="w3-bar-item w3-button">Student</a>
+				</div>
+			</div>
+			
+			<div class="w3-dropdown-click">
+				<div class="w3-button w3-left w3-card" onclick="myAccFunc('accresearch')">Research <i class="fa fa-caret-down w3-right"></i></div>
+				<div id="accresearch" class="w3-hide w3-white w3-card-4">
+					<a href="./templates/publications.html" class="w3-bar-item w3-button">Publications</a>
+					<a href="./templates/projects.html" class="w3-bar-item w3-button">Projects</a>
+				</div>
+			</div>
+
+			
+            <a href="./templates/admission.html" class="w3-bar-item w3-left w3-button w3-padding-large w3-border">Admission</a>
+			<a href="./templates/facilities.html" class="w3-bar-item w3-left w3-button w3-padding-large w3-border">Facilities</a>
+            <a href="#gallery" class="w3-bar-item w3-left w3-white w3-button w3-padding-large w3-border" onclick=minimize()>Gallery</a>
+            <!-- <a href="#news" class="w3-bar-item w3-center w3-button w3-padding-large">News</a> -->
+            <a href="#contact" class="w3-bar-item w3-left w3-button w3-padding-large w3-border" onclick=minimize()>Contact us</a>
+        </div>
+    </div>
+
+    <!-- Header big size-->
+    <header class="w3-container w3-white w3-border-bottom w3-border-light-grey w3-hide-small"
+        style="padding-top:60px; padding-bottom: 10px;">
+        <div class="w3-row">
+            <div class="w3-container w3-col l2"> </div>
+
+            <div class="w3-container w3-col l2 w3-center w3-image" onclick="window.location.href='./index.html'"
+                style="cursor:pointer;">
+                <img src="./img/IIT_Guwahati_Logo.png" style="max-width: 150px;">
+            </div>
+
+            <div class="w3-container w3-col l5 w3-center" onclick="window.location.href='#'" style="cursor:pointer;">
+                <br>
+				<h3>Indian Institute of Technology Guwahati</h3>
+                <h2 class="w3-text-green"><b>School of Agro and Rural Technology</b></h2>
+                <!-- <h4><i>..linking science with society..</i></h4> -->
+            </div>
+
+            <div class="w3-container w3-col l2"></div>
+
+        </div>
+    </header>
+	
+
+    <!-- Small size -->
+    <header class="w3-container w3-white w3-border-bottom w3-border-grey w3-hide-large w3-hide-medium"
+        style="padding-top: 60px; padding-bottom: 10px;">
+        <div class="w3-row">
+            <div class="w3-container w3-col l2"></div>
+
+            <div class="w3-container w3-col l2 w3-center w3-image" onclick="window.location.href='./index.html'"
+                style="cursor:pointer;">
+                <img src="./img/IIT_Guwahati_Logo.png" style="max-width: 100px;">
+            </div>
+
+            <div class="w3-container w3-col l5 w3-center" onclick="window.location.href='#'" style="cursor:pointer;">
+                <h3>IIT Guwahati</h3>
+                <h4 class="w3-text-green"><b>School of Agro and Rural Technology</h4>
+                <h6><i></i></h6>
+            </div>
+
+            <!-- <div class="w3-container w3-col l2"></div> -->
+
+        </div>
+    </header>
+
+	<h4 class="w3-center" style="background-color: #FFFF4D;">  <a href="./templates/admission.html" class="fa fa-star w3-text-white w3-card w3-red w3-button btn w3-medium" > Quick Link for Admission 2023 </a> </h4>
+    <!-- Slideshow -->
+    <div>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="dots active"
+                    style="width: 10px;height: 10px;border-radius: 100%;"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1" class="dots"
+                    style="width: 10px;height: 10px;border-radius: 100%;"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2" class="dots"
+                    style="width: 10px;height: 10px;border-radius: 100%;"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="3" class="dots"
+                    style="width: 10px;height: 10px;border-radius: 100%;"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="./img/img1.jpg" alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>...</h5>
+                        <p>...</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="./img/img2.jpg" alt="Second slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>...</h5>
+                        <p>...</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="./img/img3.jpg" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>...</h5>
+                        <p>...</p>
+                    </div>
+                </div>
+				<div class="carousel-item">
+                    <img class="d-block w-100" src="./img/img4.jpg" alt="Fourth slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>...</h5>
+                        <p>...</p>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev slideshow" href="#carouselExampleIndicators" role="button"
+                data-slide="prev">
+                <i class="fa fa-chevron-left w3-round w3-white" style="color:black; font-size:36px"></i>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next slideshow" href="#carouselExampleIndicators" role="button"
+                data-slide="next">
+                <i class="fa fa-chevron-right w3-round w3-white" style="color:black; font-size:36px"></i>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <!-- First Grid -->
+    <div style="background-image: url(./img/background3-blur.jpg); background-attachment: fixed">
+        <div class="w3-row-padding custom-flex w3-container w3-margin-bottom w3-margin-top"
+            style="padding-left: 30px; padding-right: 30px; margin-left:auto;margin-right:auto;max-width:1215px">
+
+            <div class="w3-half" style="background-color: #f4fcf7;">
+                <h2 style="padding-bottom: 10px; border-bottom: 1px solid rgb(49, 209, 62); line-height: 48px;">
+                    About Us:
+                </h2>
+
+                <div class="w3-panel">
+                    <h6>School of Agro and Rural Technology (SART) was renamed from Centre for Rural Technology in the year 2021. School of Agro and Rural Technology at IIT Guwahati was established newly in the year 2016 to promote multidisciplinary activities. Centre will impart teaching, to conduct research and to provide consultancy in various facets of rural sectors with special emphasis on training and research needs of the Indian rural sector and contributing to International research in Appropriate Technology for rural community. The centre in close collaboration with NGO, voluntary organizations, R&D institutes, Government programs/ schemes will provide facilities to innovators/ engineers to contribute meaningfully to the nation to answer the issues like poverty, under developed economy, unemployment, of the rural sector and the challenges imposed by resource constraints. Faculty members from various departments of the institute such as Biosciences and Bioengineering, Civil Engineering, Design, Mechanical Engineering, Humanities and Social Sciences are associated with the centre for the promotion of interdisciplinary research for Rural Development. To support the research work in the projects, the centre has two academic programmes - Doctor of Philosophy (PhD) and Master of Technology (MTech)..</h6>
+                    <!-- <h4 style="padding-top: 20px;"><b>Major thrust areas of research:</b></h4> -->
+                    <!-- <h6 class="w3-text-grey"> -->
+                        <!-- <li>Biochar & Bio-fertilizers development.</li> -->
+                        <!-- <li>Crop production and productivity.</li> -->
+                        <!-- <li>Converting agricultural wastes in to useful products.</li> -->
+                        <!-- <li>Natural Resources Management through watershed based approaches.</li> -->
+                        <!-- <li>Soil Pollution studies and its management.</li> -->
+                        <!-- <li>Research on bluehouse gases emission from Agriculture sector and its adaptation and -->
+                            <!-- mitigation -->
+                            <!-- options.</li> -->
+                        <!-- <li>Climate Change-V&A at the community level.</li> -->
+                        <!-- <li>Disaster Risk Reduction and community-based coping strategies</li> -->
+
+                    <!-- </h6> -->
+                </div>
+            </div>
+
+            <div class="w3-half" style="background-color: #f4fcf7;">
+                <div class="w3-panel w3-card right2left">
+                    <h2 style="background-color: rgb(158, 255, 255);"> <i class="fa fa-bell"
+                            style='color:rgb(255, 251, 0);text-shadow: 0 0 3px #000;'></i>
+                        Events
+                        and
+                        Notifications
+                    </h2>
+
+                    <div id="ContentCarousel1" class="carousel slide" data-ride="carousel"
+                        style="margin-left: 30px; margin-right: 30px;" data-interval="0">
+                        <ol class="carousel-indicators" style="margin-bottom: -10px;">
+                            <li data-target="#ContentCarousel1" data-slide-to="0" class="dots active"
+                                style="width: 10px;height: 10px;border-radius: 100%;"></li>
+                            <li data-target="#ContentCarousel1" data-slide-to="1" class="dots"
+                                style="width: 10px;height: 10px;border-radius: 100%;"></li>
+                        </ol>
+                        <div class="carousel-inner"  role="listbox" style=" width:100%; height: 400px !important;">
+                            <div class="carousel-item active">
+                                <h6 class="w3-padding-16  w3-border-bottom">
+								<a href="https://www.iitg.ac.in/crt/files/MedProTech_Brochure.pdf" target="_blank"> International Seminar on Medicinal plant production and Advancement in Herbal Medicine, Nutraceuticals, Cosmetics and other Herbal product formulation technologies </a>
+                                    <br>
+                                    <i class='fas fa-calendar-alt'> 23/01/2022</i> 
+									<!-- <span class="w3-tag w3-round w3-yellow w3-border">New</span> -->
+                                </h6>
+                                <h6 class="w3-padding-16 w3-border-bottom">
+								<!-- Congratulations to Ms. Rubeka for receiving the prestigious Prime Minister’s Research Fellowship	Ministry of Education, Govt. of India -->
+                                    <!-- <br> -->
+                                    <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+                                </h6>
+                                <h6 class="w3-padding-16 w3-border-bottom">
+								<!-- Congratulations to Ms. Heena Kauser for receiving Second prize for Oral presentation	Research and Industrial Conclave 2022 (RIC2022), IIT Guwahati, Assam India -->
+                                    <!-- <br> -->
+                                    <!-- <i class='fas fa-calendar-alt'> 23/01/2022</i> -->
+                                </h6>
+                            </div>
+                            <div class="carousel-item">
+                                <h6 class="w3-padding-16  w3-border-bottom">
+								<!-- Congratulation to Mr. Rajendra Adak	Best Oral Presentation (1st), Theme: Plant Sciences	International Conference on Advances and Innovations in Biotechnology and Allied Sciences (IC-AIBAS-2022), Chandigarh University, Punjab,   India, March 24-25, 2022 -->
+                                    <!-- <br> -->
+                                    <!-- <i class='fas fa-calendar-alt'> 25/03/2022</i> -->
+                                </h6>
+                                <h6 class="w3-padding-16 w3-border-bottom">
+								<!-- Congratulation to Ms. Ashmita Das for receiving the prestigious PMRF	fellowship from MHRD -->
+                                    <!-- <br> -->
+                                    <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+                                </h6>
+                                <h6 class="w3-padding-16 w3-border-bottom">
+								<!-- Congratulation to Ms. Vinny Kohli and Mr. Mindewar Amey Shriram	First prize for poster presentation	International Conference on Emerging Technologies in Food Processing-II  -->
+								<!-- (ETFP -2022) Organized by Department of Food Processing Technology, Ghani Khan Choudhury Institute of Engineering and Technology, Malda, West Bengal -->
+
+                                    <!-- <br> -->
+                                    <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+                                </h6>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#ContentCarousel1" role="button" data-slide="prev"
+                            style="margin-left: -50px;">
+                            <i class="fas fa-arrow-left w3-round w3-grey w3-hover-blue" aria-hidden="true"
+                                style="color:black; font-size: 20px;"></i>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#ContentCarousel1" role="button" data-slide="next"
+                            style="margin-right: -50px;">
+                            <i class="fas fa-arrow-right w3-round w3-grey w3-hover-blue" aria-hidden="true"
+                                style="color:black; font-size: 20px;"></i>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <div class="w3-row w3-margin-bottom w3-margin-left">
+                        <a href="./templates/eventsandann.html" class="w3-button w3-round-xxlarge w3-blue">View All</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Second Grid -->
+    <div class="w3-row-padding w3-container"
+        style="padding: 32px; background-image: url(./img/background2-min-blur.jpg); background-size: cover; background-attachment: fixed;">
+        <div id="awards" class="w3-half">
+            <div class="w3-panel w3-card w3-white fade">
+                <!-- style="box-shadow: 0 0 2em 1em #20b62f;" -->
+                <h2 style="background-color: rgb(158, 255, 255);"> <i class="fa fa-trophy" style='color:rgb(255, 251, 0);text-shadow: 0 0 3px #000;'></i> Awards and Achievements</h2>
+                <div id="ContentNews" class="carousel slide w3-hide-small" data-ride="carousel"
+                    style="margin-left: 80px; margin-right: 80px;" data-interval="0">
+                    <ol class="carousel-indicators" style="margin-bottom: -10px;">
+                        <li data-target="#ContentCarousel1" data-slide-to="0" class="dots active"
+                            style="width: 10px;height: 10px;border-radius: 100%;"></li>
+                        <li data-target="#ContentCarousel1" data-slide-to="1" class="dots"
+                            style="width: 10px;height: 10px;border-radius: 100%;"></li>
+                        <li data-target="#ContentCarousel1" data-slide-to="2" class="dots"
+                            style="width: 10px;height: 10px;border-radius: 100%;"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox" style=" width:100%; height: 400px !important;">
+						<div class="carousel-item active">
+							<h6 class="w3-padding-16  w3-border-bottom">Congratulation to Ms. Rubeka, Best Oral Presenter. Research and Industrial Conclave 2022 (RIC2022), IIT Guwahati, Assam India
+								<br>
+								<i class='fas fa-calendar-alt'> 23/01/2022</i> 
+								<!-- <span class="w3-tag w3-round w3-yellow w3-border">New</span> -->
+							</h6>
+							<h6 class="w3-padding-16 w3-border-bottom">Congratulations to Ms. Rubeka for receiving the prestigious Prime Minister’s Research Fellowship	Ministry of Education, Govt. of India
+								<br>
+								<!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+							</h6>
+							<h6 class="w3-padding-16 w3-border-bottom">Congratulations to Ms. Heena Kauser for receiving Second prize for Oral presentation	Research and Industrial Conclave 2022 (RIC2022), IIT Guwahati, Assam India
+								<br>
+								<i class='fas fa-calendar-alt'> 23/01/2022</i>
+							</h6>
+						</div>
+						<div class="carousel-item">
+							<h6 class="w3-padding-16  w3-border-bottom">Congratulation to Mr. Rajendra Adak	Best Oral Presentation (1st), Theme: Plant Sciences	International Conference on Advances and Innovations in Biotechnology and Allied Sciences (IC-AIBAS-2022), Chandigarh University, Punjab,   India, March 24-25, 2022
+								<br>
+								<i class='fas fa-calendar-alt'> 25/03/2022</i>
+							</h6>
+							<h6 class="w3-padding-16 w3-border-bottom">Congratulation to Ms. Ashmita Das for receiving the prestigious PMRF	fellowship from MHRD
+								<br>
+								<!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+							</h6>
+							<h6 class="w3-padding-16 w3-border-bottom">Congratulation to Ms. Vinny Kohli and Mr. Mindewar Amey Shriram	First prize for poster presentation	International Conference on Emerging Technologies in Food Processing-II 
+							(ETFP -2022) Organized by Department of Food Processing Technology, Ghani Khan Choudhury Institute of Engineering and Technology, Malda, West Bengal
+
+								<br>
+								<!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+							</h6>
+						</div>
+                        <div class="carousel-item">
+                            <h6 class="w3-padding-16  w3-border-bottom">Congratulation to Prof./ Dr. Rakhi Chaturvedi for receiving the prestigious Prof. F.C. Steward Memorial Lecture Award from the Plant Tissue Culture Association (India)
+                                <br>
+                                <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+                            </h6>
+                            <h6 class="w3-padding-16 w3-border-bottom">Congratulations to Prof./ Dr. Rakhi Chaturvedi.The Government of India and British High Commission, New Delhi, has recognised and honoured her among top 75 women in STEM and will be featured in the 2nd edition of the book ‘She Is – 75 Indian Women in STEM', 2022
+                                <br>
+                                <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+                            </h6>
+                            <h6 class="w3-padding-16 w3-border-bottom">
+                                <br>
+                                <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+                            </h6>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev w3-margin-right w3-hover-blue" href="#ContentNews" role="button"
+                        data-slide="prev" style="margin-left: -90px; color:black; font-size:20px">
+                        <i class="fas fa-arrow-left w3-round" aria-hidden="true" style="color:black"></i>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next w3-margin-left w3-hover-blue" href="#ContentNews" role="button"
+                        data-slide="next" style="margin-right: -90px; font-size: 20px; color:black">
+                        <i class="fas fa-arrow-right w3-round" aria-hidden="true"
+                            style="color:black; font-size:20px"></i>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+                <!-- for small devices -->
+                <div id="ContentNewsSmall" class="carousel slide w3-hide-large w3-hide-medium" data-ride="carousel"
+                    style="margin-left: 20px; margin-right: 20px;" data-interval="0">
+                    <ol class="carousel-indicators" style="margin-bottom: -10px;">
+                        <li data-target="#ContentCarousel1" data-slide-to="0" class="dots active"
+                            style="width: 10px;height: 10px;border-radius: 100%;"></li>
+                        <li data-target="#ContentCarousel1" data-slide-to="1" class="dots"
+                            style="width: 10px;height: 10px;border-radius: 100%;"></li>
+                        <li data-target="#ContentCarousel1" data-slide-to="2" class="dots"
+                            style="width: 10px;height: 10px;border-radius: 100%;"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+							<h6 class="w3-padding-16  w3-border-bottom">Congratulation to Ms. Rubeka, Best Oral Presenter. Research and Industrial Conclave 2022 (RIC2022), IIT Guwahati, Assam India
+								<br>
+								<i class='fas fa-calendar-alt'> 23/01/2022</i> 
+								<!-- <span class="w3-tag w3-round w3-yellow w3-border">New</span> -->
+							</h6>
+							<h6 class="w3-padding-16 w3-border-bottom">Congratulations to Ms. Rubeka for receiving the prestigious Prime Minister’s Research Fellowship	Ministry of Education, Govt. of India
+								<br>
+								<!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+							</h6>
+							<h6 class="w3-padding-16 w3-border-bottom">Congratulations to Ms. Heena Kauser for receiving Second prize for Oral presentation	Research and Industrial Conclave 2022 (RIC2022), IIT Guwahati, Assam India
+								<br>
+								<i class='fas fa-calendar-alt'> 23/01/2022</i>
+							</h6>
+						</div>
+						<div class="carousel-item">
+							<h6 class="w3-padding-16  w3-border-bottom">Congratulation to Mr. Rajendra Adak	Best Oral Presentation (1st), Theme: Plant Sciences	International Conference on Advances and Innovations in Biotechnology and Allied Sciences (IC-AIBAS-2022), Chandigarh University, Punjab,   India, March 24-25, 2022
+								<br>
+								<i class='fas fa-calendar-alt'> 25/03/2022</i>
+							</h6>
+							<h6 class="w3-padding-16 w3-border-bottom">Congratulation to Ms. Ashmita Das for receiving the prestigious PMRF	fellowship from MHRD
+								<br>
+								<!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+							</h6>
+							<h6 class="w3-padding-16 w3-border-bottom">Congratulation to Ms. Vinny Kohli and Mr. Mindewar Amey Shriram	First prize for poster presentation	International Conference on Emerging Technologies in Food Processing-II 
+							(ETFP -2022) Organized by Department of Food Processing Technology, Ghani Khan Choudhury Institute of Engineering and Technology, Malda, West Bengal
+
+								<br>
+								<!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+							</h6>
+						</div>
+                        <div class="carousel-item">
+                            <h6 class="w3-padding-16  w3-border-bottom">Congratulation to Prof./ Dr. Rakhi Chaturvedi for receiving the prestigious Prof. F.C. Steward Memorial Lecture Award from the Plant Tissue Culture Association (India)
+                                <br>
+                                <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+                            </h6>
+                            <h6 class="w3-padding-16 w3-border-bottom">Congratulations to Prof./ Dr. Rakhi Chaturvedi.The Government of India and British High Commission, New Delhi, has recognised and honoured her among top 75 women in STEM and will be featured in the 2nd edition of the book ‘She Is – 75 Indian Women in STEM', 2022
+                                <br>
+                                <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+                            </h6>
+                            <h6 class="w3-padding-16 w3-border-bottom">
+                                <br>
+                                <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+                            </h6>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev w3-margin-right" href="#ContentNewsSmall" role="button"
+                        data-slide="prev" style="margin-left: -40px; color:black; font-size:20px">
+                        <i class="fas fa-arrow-left" aria-hidden="true" style="color:black"></i>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next w3-margin-left" href="#ContentNewsSmall" role="button"
+                        data-slide="next" style="margin-right: -40px; font-size: 20px; color:black">
+                        <i class="fas fa-arrow-right" aria-hidden="true" style="color:black; font-size:20px"></i>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <div class="w3-row w3-margin-bottom w3-margin-left">
+                    <button class="w3-button w3-round-xxlarge w3-blue">View All</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="publications" class="w3-half">
+            <div class="w3-panel w3-card w3-white fade">
+                <!-- style="box-shadow: 0em 0em 1em 1em #20b62f;" -->
+                <h2 style="background-color: rgb(158, 255, 255);"> <i class="fa fa-newspaper-o"
+                        style='color:grey; text-shadow: 0 0 3px #000;'></i> Recent Publications</h2>
+                <div id="ContentPublications" class="carousel slide w3-hide-small" data-ride="carousel"
+                    style="margin-left: 80px; margin-right: 80px;" data-interval="0">
+                    <ol class="carousel-indicators" style="margin-bottom: -10px;">
+                        <li data-target="#ContentCarousel1" data-slide-to="0" class="dots active"
+                            style="width: 10px;height: 10px;border-radius: 100%;"></li>
+                        <li data-target="#ContentCarousel1" data-slide-to="1" class="dots"
+                            style="width: 10px;height: 10px;border-radius: 100%;"></li>
+                        <!-- <li data-target="#ContentCarousel1" data-slide-to="2" class="dots" -->
+                            <!-- style="width: 10px;height: 10px;border-radius: 100%;"></li> -->
+                    </ol>
+                    <div class="carousel-inner"  role="listbox" style=" width:100%; height: 400px !important;">
+                        <div class="carousel-item active">
+                            <h6 class="w3-padding-16  w3-border-bottom">Kauser, H., Khwairakpam, M., Organic waste management by two-stage composting process to decrease the time required for vermicomposting.	Environmental Technology & Innovation, 2022
+                                <br>
+                                <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> <span class="w3-tag w3-round w3-yellow">New</span> -->
+                            </h6>
+                            <h6 class="w3-padding-16 w3-border-bottom">Kauser, H. and  Khwairakpam, M.,	Fate of invasive weed Mikania micrantha Kunth using vermitechnology employing three monoculture of earthworm species.	Bioresource Technology Reports.	2021	DOI: https://doi.org/10.1016/j.biteb.2021.100827
+
+                                <br>
+                                <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+                            </h6>
+                            <h6 class="w3-padding-16 w3-border-bottom">Saha, B., Khwairakpam, M., Kalamdhad, A.S.,	Thermal pre-treatment – A prerequisite for the reduction of hydrolysis stage during anaerobic digestion of Ageratum conyzoides.	Materials Science for Energy Technologies	2021
+                                <br>
+                                <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+                            </h6>
+                        </div>
+                        <div class="carousel-item">
+                            <h6 class="w3-padding-16  w3-border-bottom">Kauser, H. and Khwairakpam, M.	Composting and vermicomposting of obnoxious weeds-A novel approach for the degradation of allelochemicals	Advanced Organic Waste Management. Sustainable Practices and Approaches
+                                <br>
+                                <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+                            </h6>
+                            <h6 class="w3-padding-16 w3-border-bottom">C Shashikumar, Siddhartha Singha, Sudip Mitra	Microbial Polysaccharides (MPs) in Food Packaging	Biopolymer-Based Food Packaging: Innovations and Technology Applications	John Wiley & Sons
+                                <br>
+                                <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+                            </h6>
+                            <h6 class="w3-padding-16 w3-border-bottom">
+                                <br>
+                                <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+                            </h6>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev w3-margin-right w3-hover-blue" href="#ContentPublications"
+                        role="button" data-slide="prev" style="margin-left: -90px; color:black; font-size:20px">
+                        <i class="fas fa-arrow-left" aria-hidden="true" style="color:black"></i>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next w3-margin-left w3-hover-blue" href="#ContentPublications"
+                        role="button" data-slide="next" style="margin-right: -90px; font-size: 20px; color:black">
+                        <i class="fas fa-arrow-right" aria-hidden="true" style="color:black; font-size:20px"></i>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+                <!-- for small devices -->
+                <div id="ContentPublicationsSmall" class="carousel slide w3-hide-large w3-hide-medium"
+                    data-ride="carousel" style="margin-left: 20px; margin-right: 20px;" data-interval="0">
+                    <ol class="carousel-indicators" style="margin-bottom: -10px;">
+                        <li data-target="#ContentCarousel1" data-slide-to="0" class="dots active"
+                            style="width: 10px;height: 10px;border-radius: 100%;"></li>
+                        <li data-target="#ContentCarousel1" data-slide-to="1" class="dots"
+                            style="width: 10px;height: 10px;border-radius: 100%;"></li>
+                        <!-- <li data-target="#ContentCarousel1" data-slide-to="2" class="dots" -->
+                            <!-- style="width: 10px;height: 10px;border-radius: 100%;"></li> -->
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <h6 class="w3-padding-16  w3-border-bottom">Kauser, H., Khwairakpam, M., Organic waste management by two-stage composting process to decrease the time required for vermicomposting.	Environmental Technology & Innovation, 2022
+                                <br>
+                                <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> <span class="w3-tag w3-round w3-yellow">New</span> -->
+                            </h6>
+                            <h6 class="w3-padding-16 w3-border-bottom">Kauser, H. and  Khwairakpam, M.,	Fate of invasive weed Mikania micrantha Kunth using vermitechnology employing three monoculture of earthworm species.	Bioresource Technology Reports.	2021	DOI: https://doi.org/10.1016/j.biteb.2021.100827
+
+                                <br>
+                                <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+                            </h6>
+                            <h6 class="w3-padding-16 w3-border-bottom">Saha, B., Khwairakpam, M., Kalamdhad, A.S.,	Thermal pre-treatment – A prerequisite for the reduction of hydrolysis stage during anaerobic digestion of Ageratum conyzoides.	Materials Science for Energy Technologies	2021
+                                <br>
+                                <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+                            </h6>
+                        </div>
+                        <div class="carousel-item">
+                            <h6 class="w3-padding-16  w3-border-bottom">Kauser, H. and Khwairakpam, M.	Composting and vermicomposting of obnoxious weeds-A novel approach for the degradation of allelochemicals	Advanced Organic Waste Management. Sustainable Practices and Approaches
+                                <br>
+                                <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+                            </h6>
+                            <h6 class="w3-padding-16 w3-border-bottom">C Shashikumar, Siddhartha Singha, Sudip Mitra	Microbial Polysaccharides (MPs) in Food Packaging	Biopolymer-Based Food Packaging: Innovations and Technology Applications	John Wiley & Sons
+                                <br>
+                                <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+                            </h6>
+                            <h6 class="w3-padding-16 w3-border-bottom">
+                                <br>
+                                <!-- <i class='fas fa-calendar-alt'> 01/01/1111</i> -->
+                            </h6>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev w3-margin-right" href="#ContentPublicationsSmall" role="button"
+                        data-slide="prev" style="margin-left: -40px; color:black; font-size:20px">
+                        <i class="fas fa-arrow-left" aria-hidden="true" style="color:black"></i>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next w3-margin-left" href="#ContentPublicationsSmall" role="button"
+                        data-slide="next" style="margin-right: -40px; font-size: 20px; color:black">
+                        <i class="fas fa-arrow-right" aria-hidden="true" style="color:black; font-size:20px"></i>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <div class="w3-row w3-margin-bottom w3-margin-left">
+                    <button onclick="window.location.href='./templates/publications.html';"
+                        class="w3-button w3-round-xxlarge w3-blue"><a>View All</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Third Grid -->
+    <h2 id="gallery" class="w3-row-padding w3-margin-top"
+        style="padding-left: 42px; background-color: rgb(158, 255, 255);"> <i class="fa fa-image"
+            style="color:grey"></i> Gallery
+    </h2>
+    <div style="background-image: url(./img/background3-blur.jpg); background-attachment: fixed;">
+        <div class="w3-row-padding w3-container custom-flex w3-margin-bottom w3-content">
+
+            <div class="w3-col s6 m4 l4 w3-margin-bottom fade w3-card" style="background-color: #ffffff;">
+                <div class="w3-container">
+                    <img src="./img/gallery/Center_and_Innovoir.jpg" style="width:100%">
+
+                    <p class="w3-center">MoU signed between SART and Innovoir </p>
+
+                </div>
+            </div>
+
+            <div class="w3-col s6 m4 l4 w3-margin-bottom fade w3-card" style="background-color: #ffffff;">
+                <div class="w3-container">
+                    <img src="./img/gallery/Center_and_icco_india.jpg" style="width:100%">
+
+                    <p class="w3-center">MoU signed betweeb SART and ICCO India</p>
+
+                </div>
+            </div>
+
+
+            <div class="w3-col s6 m4 l4 w3-margin-bottom w3-card fade" style="background-color: #ffffff;">
+                <div class="w3-container">
+                    <img src="./img/gallery/Mou_Center_Cadilla_Pharmaceuticals.jpg" style="width:100%">
+
+                    <div class="w3-container">
+                        <p class="w3-center">MoU signed between SART and Cadilla Pharmaceuticals <b></b></p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="w3-col s6 m4 l4 w3-margin-bottom fade w3-card" style="background-color: #ffffff;">
+                <div class="w3-container">
+                    <img src="./img/gallery/Center_and_Innovoir.jpg" style="width:100%">
+
+                    <p class="w3-center">MoU signed between SART and Innovoir </p>
+
+                </div>
+            </div>
+
+            <div class="w3-col s6 m4 l4 w3-margin-bottom fade w3-card" style="background-color: #ffffff;">
+                <div class="w3-container">
+                    <img src="./img/gallery/Center_and_icco_india.jpg" style="width:100%">
+
+                    <p class="w3-center">MoU signed betweeb SART and ICCO India</p>
+
+                </div>
+            </div>
+
+
+            <div class="w3-col s6 m4 l4 w3-margin-bottom w3-card fade" style="background-color: #ffffff;">
+                <div class="w3-container">
+                    <img src="./img/gallery/Mou_Center_Cadilla_Pharmaceuticals.jpg" style="width:100%">
+
+                    <div class="w3-container">
+                        <p class="w3-center">MoU signed between SART and Cadilla Pharmaceuticals <b></b></p>
+                    </div>
+                </div>
+            </div>
+            <button class="w3-button w3-blue w3-round-xxlarge w3-margin-bottom"><b>View All</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact" class="w3-container" style="background-color: #1b1b1b; color: white;">
+    <div class="w3-center w3-content">
+      <div class="w3-quarter w3-left-align">
+        <h4><b>Contact Us</b></h4>
+        <p><i class='fas fa-map-marker-alt'></i> &nbsp;&nbsp;&nbsp;School of Agro and Rural<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Technology, IIT
+          Guwahati<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Guwahati 781039<br>
+          <i class='fa fa-envelope'></i> &nbsp;&nbsp;hocrt@iitg.ac.in<br>
+          <i class='fas fa-phone'></i> &nbsp;&nbsp;0123-456712</li>
+        </p>
+
+      </div>
+
+      <div class="w3-quarter w3-left-align">
+
+        <h4><b>Department Resources</b></h4>
+        <li><a href="#" class="w3-button">Item 1</a></li>
+        <li><a href="#" class="w3-button">Item 2</a></li>
+        <li><a href="#" class="w3-button">Item 3</a></li>
+
+      </div>
+
+      <div class="w3-quarter w3-left-align">
+
+        <h4><b>Important Links</b></h4>
+        <li><a href="#" class="w3-button">Item 1</a></li>
+        <li><a href="#" class="w3-button">Item 2</a></li>
+        <li><a href="#" class="w3-button">Item 3</a></li>
+
+      </div>
+
+      <div class="w3-quarter w3-left-align">
+
+        <h4><b>Quick Links</b></h4>
+        <li><a href="#" class="w3-button">Item 1</a></li>
+        <li><a href="#" class="w3-button">Item 2</a></li>
+        <li><a href="#" class="w3-button">Item 3</a></li>
+
+      </div>
+    </div>
+  </footer>
+  <div class="w3-center" style="background-color: #000000; color: white;">© School of Agro and Rural Technology , Indian Institute
+    of Technology
+    Guwahati, All rights
+    reserved. Designed by Viksit Labs</div>
+
+
+    <script>
+        // Used to toggle the menu on small screens when clicking on the menu button
+        function myFunction() {
+            var x = document.getElementById("navDemo");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+                var y = document.getElementById("menu");
+                y.classList.remove("fa", "fa-bars");
+                y.classList.add("fa", "fa-close");
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+                var y = document.getElementById("menu");
+                y.classList.remove("fa", "fa-close");
+                y.classList.add("fa", "fa-bars");
+            }
+        }
+    </script>
+
+    <script>
+        var count = 0;
+        $(window).on("load", function () {
+            $(window).scroll(function () {
+                var windowBottom = $(this).scrollTop() + $(this).innerHeight();
+                $(".fade").each(function () {
+                    /* Check the location of each desired element */
+                    var objectBottom = $(this).offset().top + $(this).outerHeight();
+                    var objectTop = $(this).offset().top;
+                    /* If the element is completely within bounds of the window, fade it in */
+                    if (objectBottom - ((objectBottom - objectTop) / 1.02) < windowBottom) { //object comes into view (scrolling down)
+                        if ($(this).css("opacity") == 0) { $(this).fadeTo(300, 1); }
+                        count += 1;
+                    }
+                    else { //object goes out of view (scrolling up)
+                        if ($(this).css("opacity") == 1) { $(this).fadeTo(200, 0); }
+                    }
+                });
+            }).scroll(); //invoke scroll-handler on page-load
+        });
+
+
+    </script>
+	
+	<script>
+        function minimize() {
+            var x = document.getElementById("menu");
+            x.click();
+        }
+    </script>
+	
+	
+	<script>
+        //Accordion on small screens
+		function myAccFunc(id) {
+		  var x = document.getElementById(id);
+		  if (x.className.indexOf("w3-show") == -1) {
+			x.className += " w3-show";
+			x.previousElementSibling.className += " w3-green";
+		  } else { 
+			x.className = x.className.replace(" w3-show", "");
+			x.previousElementSibling.className = 
+			x.previousElementSibling.className.replace(" w3-green", "");
+		  }
+		  
+		}
+    </script>
+
+
+</body>
+
+</html>
