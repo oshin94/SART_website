@@ -404,7 +404,7 @@
 
             <div class="w3-third" style="background-color: #f4fcf7;">
                 <div class="w3-panel w3-card right2left">
-                    <h2 style="background-color: rgb(158, 255, 255);"> <i class="fa fa-bell"
+                    <h2 class="w3-left-align" style="background-color: rgb(158, 255, 255);"> <i class="fa fa-bell"
                             style='color:rgb(255, 251, 0);text-shadow: 0 0 3px #000;'></i>
                         Events
                         and
@@ -545,7 +545,7 @@
         <div id="awards" class="w3-half">
             <div class="w3-panel w3-card w3-white fade">
                 <!-- style="box-shadow: 0 0 2em 1em #20b62f;" -->
-                <h2 style="background-color: rgb(158, 255, 255);"> <i class="fa fa-trophy" style='color:rgb(255, 251, 0);text-shadow: 0 0 3px #000;'></i> Awards and Achievements</h2>
+                <h2 class="w3-left-align" style="background-color: rgb(158, 255, 255);"> <i class="fa fa-trophy" style='color:rgb(255, 251, 0);text-shadow: 0 0 3px #000;'></i> Awards and Achievements</h2>
 				<!-- big screens -->
                 <div id="ContentNews" class="carousel slide w3-hide-small" data-ride="carousel"
                     style="margin-left: 80px; margin-right: 80px;" data-interval="0">
@@ -696,7 +696,7 @@
         <div id="publications" class="w3-half">
             <div class="w3-panel w3-card w3-white fade">
                 <!-- style="box-shadow: 0em 0em 1em 1em #20b62f;" -->
-                <h2 style="background-color: rgb(158, 255, 255);"> <i class="fa fa-newspaper-o"
+                <h2 class="w3-left-align" style="background-color: rgb(158, 255, 255);"> <i class="fa fa-newspaper-o"
                         style='color:grey; text-shadow: 0 0 3px #000;'></i> Recent Publications</h2>
                 <div id="ContentPublications" class="carousel slide w3-hide-small" data-ride="carousel"
                     style="margin-left: 80px; margin-right: 80px;" data-interval="0">
@@ -950,6 +950,7 @@
 
     <script>
         var count = 0;
+		var flag = false;
         $(window).on("load", function () {
             $(window).scroll(function () {
                 var windowBottom = $(this).scrollTop() + $(this).innerHeight();
@@ -961,9 +962,12 @@
                     if (objectBottom - ((objectBottom - objectTop) / 1.02) < windowBottom) { //object comes into view (scrolling down)
                         if ($(this).css("opacity") == 0) { $(this).fadeTo(300, 1); }
                         count += 1;
+						flag=true;
                     }
                     else { //object goes out of view (scrolling up)
-                        if ($(this).css("opacity") == 1) { $(this).fadeTo(200, 0); }
+						if (!flag){
+							if ($(this).css("opacity") == 1) { $(this).fadeTo(200, 0); }
+						}
                     }
                 });
             }).scroll(); //invoke scroll-handler on page-load
